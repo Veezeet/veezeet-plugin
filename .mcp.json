@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "veezeet": {
+      "type": "http",
+      "url": "https://api.veezeet.com/planner/mcp"
+    }
+  }
+}

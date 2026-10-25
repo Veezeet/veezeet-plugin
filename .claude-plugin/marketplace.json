@@ -1,0 +1,15 @@
+{
+  "name": "veezeet",
+  "description": "Veezeet: plan trips in conversation and keep them in your Veezeet account.",
+  "owner": {
+    "name": "Veezeet",
+    "email": "contact@veezeet.com"
+  },
+  "plugins": [
+    {
+      "name": "veezeet",
+      "source": "./",
+      "description": "Plan trips in conversation and keep them in Veezeet. Veezeet does not book or pay for anything."
+    }
+  ]
+}
