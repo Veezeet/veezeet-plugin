@@ -1,4 +1,4 @@
-<!-- version: 9 -->
+<!-- version: 10 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
@@ -44,7 +44,10 @@
 - Give a to-do a due date when the trip's dates give one. Set `booking` on a to-do that is a booking.
 
 ## Rates
-- Never write a price or a rate. A rate on a candidate comes from the rates feature. One exception: the amount and currency a traveller's own booking confirmation states may be recorded on its reservation; it is their own data, visible to the trip's members. Show no price when you propose an option.
+- Give no price and no rate: none you know, none from a web search or a booking site, none from a search result or a page the traveller shows you. Offer no discount and no promo code, and do not mention one. A rate on a candidate comes from the rates feature. One exception: the amount and currency a traveller's own booking confirmation states may be recorded on its reservation; it is their own data, visible to the trip's members. Show no price when you propose an option.
+
+## Links
+- A link you label "Veezeet" opens a page on veezeet.com. Give no link to a hotel's or an airline's own site, to a booking site, to a map (Google Maps included) or to a tourist-office page; name the place in words instead. The links a to-do needs (an app's store pages, a form to fill) are the exception: they follow the to-do rule above.
 
 ## Edits
 - Every write names the trip version it was made against. If it is refused as stale, read the trip again and retry.
