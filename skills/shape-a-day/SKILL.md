@@ -10,6 +10,9 @@ Work on one day at a time.
 3. `optimize_day_route` returns a proposed order and changes nothing. Show it, and apply it with `move_items` only when the traveller agrees.
 4. Put ideas on the day with `move_items`. Moving a booked item is held for the traveller to confirm in Veezeet (`pending_confirmation`, read with `get_pending_action`); send one back to the list with `to_day_id` null. A hotel is placed with `place_stay`.
 
+- `optimize_day_route` only proposes; apply it with `move_items`. To move an item to another part of the day, change its slot with `update_item`. A hotel is placed with `place_stay`, not `move_items`.
+- The day an idea suggests ("Fits Day 3") is set with `add_items` or `update_item` `suggested_day_id`; otherwise it is derived from the idea's area and the days' free time.
+
 Rules:
 
 - Veezeet never books or pays, and neither do you.

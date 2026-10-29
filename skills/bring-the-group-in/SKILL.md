@@ -11,6 +11,9 @@ Share the trip only as the traveller asks. Only the trip's owner can do this.
 4. Use `set_public_link` only when the traveller asks for a link, on, off or replaced.
 5. `invite_member`, `update_member_role` and `set_public_link` are all held for the traveller to confirm in Veezeet: the call answers `pending_confirmation` with an `action_id`, not a result. Say the call is waiting in Veezeet. After the traveller confirms, read the outcome with `get_pending_action`, and only then give the returned `invite_url` or `public_url` for the traveller to send themselves.
 
+- `list_members` is owner-only; a contributor or editor tells their own votes and changes from the trip's own member and user ids.
+- `set_public_link` changes the public link; the trip's `url` is not that link, which is returned once as `public_url`.
+
 Rules:
 
 - Veezeet never books or pays, and neither do you.
