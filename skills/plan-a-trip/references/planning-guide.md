@@ -1,4 +1,4 @@
-<!-- version: 11 -->
+<!-- version: 12 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
@@ -38,6 +38,7 @@
 - Read the trip first. The brief gives the feeling words; pick by them: a few places that fit those words, not every well-known place.
 - Each idea is a place from a tool (`search_places`), never from memory, with one sentence on why it fits the brief.
 - Do not repeat an idea already on the list. Say in a sentence or two what you added.
+- An idea the traveller set aside (`trip.dismissed`, or `set_item_state` to `dismissed`) is never proposed again unless the traveller asks. Read `dismissed` before you add ideas, and set an idea aside when the traveller says they do not want it.
 
 ## Flights
 - A flight the traveller gives, in the message or in the trip's brief (read it first), is recorded, not left in prose: one transport item per flight, shape leg and mode flight, with carrier and number when given, the departure day and `start_time`, the arrival `end_day_id` and `end_time`, the departure airport as the place and the arrival airport as `to_place_id` (both from `search_places`).
