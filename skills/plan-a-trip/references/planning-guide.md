@@ -1,4 +1,4 @@
-<!-- version: 14 -->
+<!-- version: 15 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
@@ -14,6 +14,7 @@
 ## The cart and the two tracks
 - Everything is an item with a state: idea (no day), shortlist (several options for one need), placed (has a night or a day), booked.
 - An idea may say when it wants to happen, without a day: `slot` (morning, midday, afternoon or evening) and `suggested_day_id` (a day of the trip), on `add_items` or `update_item`. Use them for "the Ferris wheel at sunset" or "the flea market on Saturday morning", not only the note. `start_time` and `duration_min` still go with a day. When the idea is put on a day, the slot stays and the suggested day is the day proposed; the traveller can change both.
+- Read an item's `status`, never infer it from `state`: `idea`, `to_decide` (an open decision), `to_book` (chosen or placed, still to be booked) or `done`. A set-aside item has no status; it is in `dismissed`.
 - Stays sit on nights. Places to visit sit on days. Each has its own place. A city is read from both, never a container: do not plan "N cities" or "N nights per city".
 - When two stays in different towns are on consecutive nights, add a transport item for the leg.
 
@@ -21,6 +22,8 @@
 - Every proposal you make in the conversation (a place, a day skeleton) goes to the Ideas in the same turn, with `suggested_day_id` and `slot` when it has one. It does not go onto days without the traveller's yes. Never leave a proposal only in the conversation.
 - The first pass adds ideas and shortlists, not filled days. Place an item only when the traveller settled it: a must-include on a stated day, or a fixed order of towns.
 - Plan days when asked: move chosen items from the list onto days. Starting again sends items back to the list, kept. Never remove them.
+- Use `make_decision` only when the traveller asks to compare ideas they already have. Never on your own: to propose candidates for a need, add them to the Ideas, as "Where one need has several answers" below says. Never choose for them, and never vote: Pour and Contre are the members' own. Read them as the group's leaning: an idea most are against is not put on a day unless asked.
+- Set `needs_no_booking: true` when you add a place that needs no booking (a walk, a free church). The default is false, so every placed walk would otherwise count as to book.
 - Do not move an item a person placed or voted for unless asked by name. A booked item is read-only unless you are told.
 - Ground every place through a tool and use the returned place id. Route, schedule and check opening hours with tools, not from memory.
 - Where one need has several answers (a hotel), add your recommendation and two or three other candidates to the Ideas, each answerable in a word; they become the options of one decision once there are two.
