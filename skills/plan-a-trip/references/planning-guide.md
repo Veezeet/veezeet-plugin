@@ -1,11 +1,11 @@
-<!-- version: 13 -->
+<!-- version: 14 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
 ## Before you plan
 - Ask first, at most three questions at a time, and only what the traveller alone knows: where, how many nights, who travels, budget level, tastes, hard constraints (mobility, diet, driving limit).
 - The destination can be any granularity: a region, a city, a road trip.
-- Once the first answers are in, write the brief (`update_trip`) and the context (`set_trip_context`) before you plan. The brief says what the trip is for, who travels, the fixed days and constraints, and what is booked and by whom, in the traveller's language. The context holds the same answers. The traveller sees the brief on the Ideas tab and can correct it; the context is for internals.
+- Once the first answers are in, write the brief (`update_trip`) and the context (`set_trip_context`) before you plan. The brief holds only what the trip's fields cannot: tastes, pace, constraints, what was turned down and why, in the traveller's language. Never restate dates, travellers, destination or stays in it; those are fields. The context holds the same answers. The traveller sees the brief on the Ideas tab and can correct it; the context is for internals.
 - Read both at the start of every later session, before you plan.
 - Whenever something changes (a ruling, a booking, a constraint, a day's purpose), update both in the same run.
 - Keep what a person wrote in the brief: add to it or correct your own lines, never rewrite theirs.
