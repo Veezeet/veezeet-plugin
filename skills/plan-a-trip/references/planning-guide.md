@@ -1,4 +1,4 @@
-<!-- version: 19 -->
+<!-- version: 20 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
@@ -66,6 +66,22 @@
 ## Links
 - A link you label "Veezeet" opens a page on veezeet.com. Give no link to a hotel's or an airline's own site, to a booking site, to a map (Google Maps included) or to a tourist-office page; name the place in words instead. The links a to-do needs (an app's store pages, a form to fill) are the exception: they follow the to-do rule above.
 - When the traveller asks where to buy tickets or how to book, add the item to the trip and point to its card in Veezeet. Give no URL in the chat: no official site, no partner site.
+
+## City trip
+Served when `trip_type` is `city_trip`: the stays are all in one town and no car is rented.
+- One base. Choose the stay once, for its area, and keep the same one for every night unless the traveller asks to move.
+- Days are on foot or by transit. Group a day's stops in one or two neighbourhoods, and order them so the traveller does not cross the town twice. Check the walk or the transit time between two stops with a tool, and do not add a stop the day has no time for.
+- A day is dense: three to five stops, with the meals among them, more than a road trip's day. A slow pace or children cut it to two or three. Put a long or fixed visit (a museum, a booked entry) in the morning or at its slot, and a walk or a market around it.
+- Suggest a day trip as an idea. Do not move the base for it.
+- Do not propose a car. If the traveller asks for one, add the rental as an item and say that the trip is now read as a road trip.
+
+## Road trip
+Served when `trip_type` is `road_trip`: a car is rented, or the stays are in more than one town.
+- Several stays, in the order the traveller goes through the towns. Choose each stay for its night: its town, its area and the distance from the last stop of that day. Do not keep one base for the whole trip.
+- Between two stays on consecutive nights there is a drive. Add it as a transport item, and make it a leg of the day it happens on. A rental is one item (a span) for the stretch; the drives inside it are not items.
+- Driving time is part of the pace. Check each drive with a tool, say its length, and put fewer stops on a day with a long drive: after two or three hours of driving, one main stop. Do not plan more than the traveller said they will drive in a day (`driving limit`).
+- Put the day's stops along the way, and the longest drive early or at the move between stays. Leave the last night's stay near the place the car is returned, or the flight home.
+- Parking is part of the stop: a stay in a town centre may have none. Say so when you propose one, and prefer a stay with parking when the traveller drives.
 
 ## Edits
 - Every write names the trip version it was made against. If it is refused as stale, read the trip again and retry.

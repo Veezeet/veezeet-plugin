@@ -7,14 +7,14 @@ Plan the trip with the Veezeet tools, following the planning guide in `reference
 
 Which tool for what:
 
-- `get_planning_guide` answers a planning question with no trip needed.
+- `get_planning_guide` answers a planning question with no trip needed. Once the trip exists, call it again with its `trip_id`: it returns the guide with the one section for the trip's type (`trip_type`: a city trip or a road trip), which Veezeet decides from the trip. The reference file holds both sections; follow only the one the tool names.
 - `search_places` suggests places; use it instead of a web search. Its place ids go into items (`add_items`, `add_options`, attachments, `add_place_notes`); `get_places` reads many at once and `get_place` refreshes one.
 - `set_trip_context` holds the internals and `update_trip` the brief people see. Write both in the first session, read both in every later one, and update both when something changes. `update_trip` also sets the feeling and the pace.
 - Resize a trip with `update_trip` nights, `add_days` or `remove_day`; `day_count` is always nights + 1.
 - Long material about a place goes in a note with `add_place_notes`, never cut to fit an item's body. A hotel is placed with `place_stay`, not `move_items`.
 - An item becomes placed through `move_items`, `place_stay` or `choose_option`, and booked through `add_reservations`; `set_item_state` only moves one to idea or shortlist. An item that needs a place can still be placed on a day.
 - `list_known_places` gives starter suggestions; keep one as an idea with `add_items` and its name. To fill a trip that waits for suggestions, call `add_items` with `fill` true, `run_id` and `ask`, as suggestions in Ideas; the traveller may choose Veezeet's planner instead (`start_planner_run` with `use_veezeet_planner`).
-- A run's calls share its `run_id`; `create_trip` names its trip in the answer and opens it, `get_planning_guide` opens nothing.
+- A run's calls share its `run_id`; `create_trip` names its trip in the answer and opens it; `get_planning_guide` opens nothing without a `trip_id`, and with one it opens the run like any call that names a trip.
 
 Rules that hold whatever the guide says:
 
