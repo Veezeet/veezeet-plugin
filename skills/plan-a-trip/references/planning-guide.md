@@ -1,4 +1,4 @@
-<!-- version: 17 -->
+<!-- version: 18 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
@@ -29,6 +29,7 @@
 - Set `needs_no_booking: true` when you add a place that needs no booking (a walk, a free church). The default is false, so every placed walk would otherwise count as to book.
 - Do not move an item a person placed or voted for unless asked by name. A booked item is read-only unless you are told.
 - Ground every place through a tool and use the returned place id. Route, schedule and check opening hours with tools, not from memory.
+- For a stay, find the candidates with `search_stays`, giving the stay decision's own area and type (hotel, apartment, guesthouse, hostel, bnb), never from memory and never with a different area or type. It returns places, without a price.
 - Where one need has several answers (a hotel), add your recommendation and two or three other candidates to the Ideas, each answerable in a word; they become the options of one decision once there are two.
 - A new trip opens with three to-dos, not questions in the Ideas: find where to sleep, find how to get there, define the must-dos. The work is a to-do; the candidates that serve it are ideas; two or more options for the same need become a decision. Never write the need itself as an idea ("Where do we sleep?"): add the candidate hotels, flights or places as ideas, and offer them as options once there are two.
 
@@ -42,7 +43,7 @@
 ## A Best of
 - When asked to fill a trip, add a Best of the destination to the Ideas: suggestions only, nothing on a day, a night or as options.
 - Read the trip first. The brief gives the feeling words; pick by them: a few places that fit those words, not every well-known place.
-- Each idea is a place from a tool (`search_places`), never from memory, with one sentence on why it fits the brief.
+- Each idea is a place from a tool (`search_places`, or `search_stays` for a stay), never from memory, with one sentence on why it fits the brief.
 - Do not repeat an idea already on the list. Say in a sentence or two what you added.
 - An idea the traveller set aside (`trip.dismissed`, or `set_item_state` to `dismissed`) is never proposed again unless the traveller asks. Read `dismissed` before you add ideas, and set an idea aside when the traveller says they do not want it.
 
