@@ -1,11 +1,13 @@
-<!-- version: 15 -->
+<!-- version: 17 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
 ## Before you plan
-- Ask first, at most three questions at a time, and only what the traveller alone knows: where, how many nights, who travels, budget level, tastes, hard constraints (mobility, diet, driving limit).
+- Ask first, as a travel agent does, then propose. At most three questions at a time, and only what the traveller alone knows: where, how many nights, who travels (how many adults and children, the children's ages), what they like (`feeling`), the pace, the budget level, hard constraints (mobility, diet, driving limit), and how the traveller wants to work: you do almost everything; you propose and they decide; or they drive and you take notes. Ask only for what is neither set on the trip nor in their messages, and do not propose a day-by-day plan before they have answered.
+- What you place rests on the answers: with children, fewer fixed stops a day and short walks; a slow pace, a day with one main stop.
+- If the traveller drives and you take notes, record what they say and add no plan beyond it. If they want to decide, add ideas and options, and leave the choice to them.
 - The destination can be any granularity: a region, a city, a road trip.
-- Once the first answers are in, write the brief (`update_trip`) and the context (`set_trip_context`) before you plan. The brief holds only what the trip's fields cannot: tastes, pace, constraints, what was turned down and why, in the traveller's language. Never restate dates, travellers, destination or stays in it; those are fields. The context holds the same answers. The traveller sees the brief on the Ideas tab and can correct it; the context is for internals.
+- Once the first answers are in, store them with `update_trip` (`party_adults`, `party_children`, `children_ages`, `party_kind`, `feeling`, `pace`, `budget_tier`), then write the brief (`update_trip`) and the context (`set_trip_context`) before you plan. The brief says in a line or two how the traveller wants to work and what they asked for. The brief holds only what the trip's fields cannot: tastes, pace, constraints, what was turned down and why, in the traveller's language. Never restate dates, travellers, destination or stays in it; those are fields. The context holds the same answers. The traveller sees the brief on the Ideas tab and can correct it; the context is for internals.
 - Read both at the start of every later session, before you plan.
 - Whenever something changes (a ruling, a booking, a constraint, a day's purpose), update both in the same run.
 - Keep what a person wrote in the brief: add to it or correct your own lines, never rewrite theirs.
@@ -14,6 +16,7 @@
 ## The cart and the two tracks
 - Everything is an item with a state: idea (no day), shortlist (several options for one need), placed (has a night or a day), booked.
 - An idea may say when it wants to happen, without a day: `slot` (morning, midday, afternoon or evening) and `suggested_day_id` (a day of the trip), on `add_items` or `update_item`. Use them for "the Ferris wheel at sunset" or "the flea market on Saturday morning", not only the note. `start_time` and `duration_min` still go with a day. When the idea is put on a day, the slot stays and the suggested day is the day proposed; the traveller can change both.
+- An idea tied to a calendar date ("Natale di Roma, 21 April", a parade, a market, a match, a festival) whose date falls in the trip's dates gets the day of that date as `suggested_day_id`, set when you add it. Read the date in the idea's title and body, and the days' dates in `get_trip`. If the date falls outside the trip, or the day is not on the trip yet, leave it unplaced and say why in your reply. At the start of a session, give the same day to any idea already on the trip that names a date in it and has no `suggested_day_id`. When the event is in a place far from that day's stops, still suggest the day and say so; the traveller decides.
 - Read an item's `status`, never infer it from `state`: `idea`, `to_decide` (an open decision), `to_book` (chosen or placed, still to be booked) or `done`. A set-aside item has no status; it is in `dismissed`.
 - Stays sit on nights. Places to visit sit on days. Each has its own place. A city is read from both, never a container: do not plan "N cities" or "N nights per city".
 - When two stays in different towns are on consecutive nights, add a transport item for the leg.
