@@ -1,4 +1,4 @@
-<!-- version: 22 -->
+<!-- version: 23 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
@@ -51,6 +51,7 @@
 ## Flights
 - A flight the traveller gives, in the message or in the trip's brief (read it first), is recorded, not left in prose: one transport item per flight, shape leg and mode flight, with carrier and number when given, the departure day and `start_time`, the arrival `end_day_id` and `end_time`, the departure airport as the place and the arrival airport as `to_place_id` (both from `search_places`).
 - Each flight gets its own journey_id: a new id for the outbound, another for the return. Each flight gets its own journey_id even when the two are written in one sentence.
+- A round trip bought as one gets one `booking_group_id` on both legs: a new id, the same on the outbound and the return. It is not a journey_id, so the two legs are never reported as not connected.
 - Then tick the "Book flights" to-do with `update_todo`: the flights are known. Do not add another to-do for them.
 - Criteria such as a budget or a room type stay in the brief; do not record them.
 
