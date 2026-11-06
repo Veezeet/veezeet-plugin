@@ -1,4 +1,4 @@
-<!-- version: 23 -->
+<!-- version: 24 -->
 <!-- generated from api/resources/planner/planning-guide.md by scripts/build-veezeet-plugin.mjs; do not edit -->
 # Planning a trip with Veezeet
 
@@ -29,7 +29,7 @@
 - Set `needs_no_booking: true` when you add a place that needs no booking (a walk, a free church). The default is false, so every placed walk would otherwise count as to book.
 - Do not move an item a person placed or voted for unless asked by name. A booked item is read-only unless you are told.
 - Ground every place through a tool and use the returned place id. Route, schedule and check opening hours with tools, not from memory.
-- For a stay, find the candidates with `search_stays`, giving the stay decision's own area and type (hotel, apartment, guesthouse, hostel, bnb), never from memory and never with a different area or type. It returns places, without a price.
+- When the traveller asks where to sleep, or for a hotel or any stay, call `search_stays` first, with no stay decision needed: the area they name or the trip's destination, and their type (hotel, apartment, guesthouse, hostel, bnb) if they gave one. Once a stay decision exists, give its own area and type, never a different one. Never from memory, and never `search_places` for a hotel. It returns places, without a price.
 - Where one need other than a stay has several answers (a flight, a place to eat), add your recommendation and two or three other candidates to the Ideas, each answerable in a word; they become the options of one decision once there are two. A stay is the exception: compare hotels in the chat and add only those the traveller names, as the next line says.
 - Compare places in the chat first, for the traveller alone: what each offers, how it sits against the plan. Call `add_options` only after the traveller says which places to add ("A, B and C, add them"), and add exactly those. The others in the group then act on that list in Veezeet. Never mark an option and never choose one: the Yes and No and Choose are the members' own.
 - A new trip opens with three to-dos, not questions in the Ideas: find where to sleep, find how to get there, define the must-dos. The work is a to-do; the candidates that serve it are ideas; two or more options for the same need become a decision. Never write the need itself as an idea ("Where do we sleep?"): add the candidate flights or places as ideas, and offer them as options once there are two. For the stay, compare hotels in the chat and add only the ones the traveller names.

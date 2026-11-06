@@ -8,7 +8,8 @@ Plan the trip with the Veezeet tools, following the planning guide in `reference
 Which tool for what:
 
 - `get_planning_guide` answers a planning question with no trip needed. Once the trip exists, call it again with its `trip_id`: it returns the guide with the one section for the trip's type (`trip_type`: a city trip or a road trip), which Veezeet decides from the trip. The reference file holds both sections; follow only the one the tool names.
-- `search_places` suggests places; use it instead of a web search. Its place ids go into items (`add_items`, `add_options`, attachments, `add_place_notes`); `get_places` reads many at once and `get_place` refreshes one.
+- `search_stays` finds where to sleep: when the traveller asks where to sleep, or for a hotel, an apartment or any stay, call it first with the area (and the type if given), with no stay decision needed. It returns places without a price; `get_stay_rate` prices one. Do not use `search_places` for a stay.
+- `search_places` suggests places to eat, see and do; use it instead of a web search. Its place ids go into items (`add_items`, `add_options`, attachments, `add_place_notes`); `get_places` reads many at once and `get_place` refreshes one.
 - `set_trip_context` holds the internals and `update_trip` the brief people see. Write both in the first session, read both in every later one, and update both when something changes. `update_trip` also sets the feeling and the pace.
 - Resize a trip with `update_trip` nights, `add_days` or `remove_day`; `day_count` is always nights + 1.
 - Long material about a place goes in a note with `add_place_notes`, never cut to fit an item's body. A hotel is placed with `place_stay`, not `move_items`.
